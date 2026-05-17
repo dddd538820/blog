@@ -37,8 +37,8 @@ open(new_filename, 'w').close()
 # 构造本次要写入 readme.md 开头的链接行
 new_lines = []
 for f in files:
-    new_lines.append(f"/src/branch/main/archive/{f}\n")
-new_lines.append(f"/src/branch/main/{new_filename}\n")
+    new_lines.append(f"/src/branch/main/archive/{f}<br>\n")
+new_lines.append(f"/src/branch/main/{new_filename}<br>\n")
 
 # 读取 readme.md 原有内容（若不存在则设为空字符串）
 original_content = ""
