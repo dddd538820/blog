@@ -49,7 +49,8 @@ def run_git_in_powershell(git_command):
     result = subprocess.run(ps_command, shell=True, capture_output=True, text=True)
     return result.stdout, result.stderr
 
-cmd = f'python addmd.py ;git add . ; git commit -m "update: {", ".join(md_files)}" ; git push -u origin main'
+# cmd = f'python addmd.py ;git add . ; git commit -m "update: {", ".join(md_files)}" ; git push -u origin main'
+cmd = f'git add . ; git commit -m "update: {", ".join(md_files)}" ; git push -u origin main'
 print(f"Running command: {cmd}")
 cmd = cmd.replace('"', '\\"')
 out, err = run_git_in_powershell(cmd)
