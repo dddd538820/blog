@@ -33,3 +33,20 @@ if files:
 new_num = max_num + 1
 new_filename = f"{date_str}.{new_num}.md"
 open(new_filename, 'w').close()
+
+# 构造本次要写入 readme.md 开头的链接行
+new_lines = []
+for f in files:
+    new_lines.append(f"archive/{f}\n")
+new_lines.append(f"{new_filename}\n")
+
+# 读取 readme.md 原有内容（若不存在则设为空字符串）
+original_content = ""
+if os.path.exists("readme.md"):
+    with open("readme.md", "r", encoding="utf-8") as rm:
+        original_content = rm.read()
+
+# 将新内容写入开头，后接原有内容
+with open("readme.md", "w", encoding="utf-8") as rm:
+    rm.writelines(new_lines)
+    rm.write(original_content)
